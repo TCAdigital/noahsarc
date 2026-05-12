@@ -2,99 +2,109 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, Heart } from "lucide-react";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Who We Are", href: "#who-we-are" },
-    { name: "What We Do", href: "#what-we-do" },
-    { name: "Projects", href: "#edu-funds" },
-    { name: "Donate", href: "#donate" },
-  ];
-
   return (
-    <nav
-      id="navbar"
-      className={`fixed w-full z-50 transition-all duration-500 px-6 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-4" : "bg-transparent py-8"
+    <header 
+      id="navbar" 
+      className={`sticky top-0 z-50 transition-all duration-300 border-b ${
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-2" : "bg-white/95 backdrop-blur-md border-stone-100 py-4"
       }`}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="relative group">
+      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <Link href="/" className="flex items-center">
           <img
             src="https://i.imgur.com/96Ycrrj.png"
             alt="Noah's Arc Logo"
-            className={`h-12 w-auto transition-all duration-500 ${
-              isScrolled ? "brightness-100" : "brightness-0 invert"
-            }`}
+            className="h-12 md:h-16 w-auto transition-transform hover:scale-105"
           />
         </Link>
+        
+        <div className="hidden lg:flex space-x-10 font-bold text-[13px] text-stone-700 uppercase tracking-wider items-center">
+          <Link href="/" className="hover:text-emerald-700 transition">Home</Link>
+          
+          <div className="relative group h-full flex items-center">
+            <button className="hover:text-emerald-700 transition flex items-center gap-1 uppercase tracking-wider py-8 outline-none">
+              Who We Are <ChevronDown size={10} className="mt-0.5" />
+            </button>
+            <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-0 w-56 bg-white shadow-xl border border-stone-100 rounded-b-lg py-2 overflow-hidden z-50 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <Link href="/mission-vision" className="block px-6 py-3 text-stone-600 hover:bg-stone-50 hover:text-emerald-700 transition border-b border-stone-50">Mission And Vision</Link>
+              <Link href="/objectives" className="block px-6 py-3 text-stone-600 hover:bg-stone-50 hover:text-emerald-700 transition border-b border-stone-50">Our Objectives</Link>
+              <Link href="/core-values" className="block px-6 py-3 text-stone-600 hover:bg-stone-50 hover:text-emerald-700 transition">Core Values</Link>
+            </div>
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`text-[10px] font-bold uppercase tracking-[0.2em] hover:text-amber-500 transition ${
-                isScrolled ? "text-stone-600" : "text-white"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link
-            href="#donate"
-            className="bg-amber-500 text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg hover:bg-amber-600 transition transform hover:scale-105"
-          >
-            Sponsor
-          </Link>
+          <Link href="/what-we-do" className="hover:text-emerald-700 transition">What We Do</Link>
+          <Link href="/sponsor" className="hover:text-emerald-700 transition py-4">Sponsor a Child</Link>
+          
+          <div className="relative group h-full flex items-center">
+            <button className="hover:text-emerald-700 transition flex items-center gap-1 uppercase tracking-wider py-4 outline-none">
+              Projects <ChevronDown size={10} className="mt-0.5" />
+            </button>
+            <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute top-full left-0 w-64 bg-white shadow-xl border border-stone-100 rounded-b-lg py-2 overflow-hidden z-50 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <Link href="/education-funds" className="block px-6 py-3 text-stone-600 hover:bg-stone-50 hover:text-emerald-700 transition border-b border-stone-50">Education Funds</Link>
+              <Link href="/girls-dormitory" className="block px-6 py-3 text-stone-600 hover:bg-stone-50 hover:text-emerald-700 transition">Girls' Dormitory Construction</Link>
+            </div>
+          </div>
+
+          <Link href="/future-trips" className="hover:text-emerald-700 transition">Future Trips</Link>
+
+          <Link href="/#contact" className="hover:text-emerald-700 transition">Contact Us</Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className={`md:hidden text-2xl ${isScrolled ? "text-stone-900" : "text-white"}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+        <div className="flex items-center space-x-4">
+          <Link href="#donate" className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg text-xs uppercase tracking-widest flex items-center gap-2 hover:scale-105 active:scale-95">
+            <Heart size={14} fill="currentColor" />
+            Donate
+          </Link>
+          <button
+            className="lg:hidden text-2xl"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <Menu size={24} />
+          </button>
+        </div>
+      </nav>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-2xl py-8 px-6 animate-in slide-in-from-top duration-300">
-          <div className="flex flex-col gap-6 text-center">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-xs font-bold uppercase tracking-widest text-stone-600"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Link
-              href="#donate"
-              className="bg-amber-500 text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Sponsor
-            </Link>
-          </div>
+        <div className="fixed inset-0 bg-white z-[100] flex flex-col items-center justify-start py-20 space-y-6 text-xl font-bold uppercase overflow-y-auto px-10 text-center text-stone-800">
+          <button className="absolute top-6 right-6 text-3xl text-stone-800" onClick={() => setIsMenuOpen(false)}>&times;</button>
+          <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+          <div className="w-full h-px bg-stone-100"></div>
+          <p className="text-stone-400 text-[10px] tracking-widest font-black">Who We Are</p>
+          <Link href="/mission-vision" className="text-sm" onClick={() => setIsMenuOpen(false)}>Mission And Vision</Link>
+          <Link href="/objectives" className="text-sm" onClick={() => setIsMenuOpen(false)}>Our Objectives</Link>
+          <Link href="/core-values" className="text-sm" onClick={() => setIsMenuOpen(false)}>Core Values</Link>
+          <div className="w-full h-px bg-stone-100"></div>
+          <Link href="/what-we-do" onClick={() => setIsMenuOpen(false)}>What We Do</Link>
+          <Link href="/sponsor" onClick={() => setIsMenuOpen(false)} className="text-amber-600">Sponsor a Child</Link>
+          <div className="w-full h-px bg-stone-100"></div>
+          <p className="text-stone-400 text-[10px] tracking-widest font-black">Projects</p>
+          <Link href="/education-funds" className="text-sm" onClick={() => setIsMenuOpen(false)}>Education Funds</Link>
+          <Link href="/girls-dormitory" className="text-sm" onClick={() => setIsMenuOpen(false)}>Girls' Dormitory Construction</Link>
+          <div className="w-full h-px bg-stone-100"></div>
+          <Link href="/future-trips" onClick={() => setIsMenuOpen(false)}>Future Trips</Link>
+          <div className="w-full h-px bg-stone-100"></div>
+          <Link href="/#contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

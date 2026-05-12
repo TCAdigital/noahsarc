@@ -21,6 +21,49 @@ body {
   }
 }
 
+/* Original Design Animations */
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.hero-bg-animate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/Q9ytvOn.jpeg');
+    background-size: cover;
+    background-position: center;
+    animation: slowZoom 20s infinite alternate ease-in-out;
+    z-index: 0;
+}
+
+@keyframes floatPortrait {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(1.5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float-portrait {
+    animation: floatPortrait 6s infinite ease-in-out;
+}
+
+/* Original Design Patterns */
+.gallery-banner {
+    background-color: #5d4e9d;
+    background-image: linear-gradient(30deg, #534591 12%, transparent 12.5%, transparent 87%, #534591 87.5%, #534591), linear-gradient(150deg, #534591 12%, transparent 12.5%, transparent 87%, #534591 87.5%, #534591), linear-gradient(30deg, #534591 12%, transparent 12.5%, transparent 87%, #534591 87.5%, #534591), linear-gradient(150deg, #534591 12%, transparent 12.5%, transparent 87%, #534591 87.5%, #534591), linear-gradient(60deg, #6556a8 25%, transparent 25.5%, transparent 75%, #6556a8 75%, #6556a8), linear-gradient(60deg, #6556a8 25%, transparent 25.5%, transparent 75%, #6556a8 75%, #6556a8);
+    background-size: 40px 70px;
+    background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+}
+
+.sponsor-bg {
+    background: linear-gradient(to right, rgba(6, 78, 59, 0.98) 45%, rgba(6, 78, 59, 0.2) 100%), url('https://i.imgur.com/pEv0FFB.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
 .parallax-bg {
   background-attachment: fixed;
   background-position: center;
@@ -49,4 +92,13 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(245, 158, 11, 0.5); /* amber-500/50 */
+}
+
+@keyframes shimmer {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
 }

@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   },
 };
 
+import TopBar from "@/components/TopBar";
+import Navbar from "@/components/Navbar";
+import WhatsAppButton from "@/components/WhatsAppButton";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,8 +36,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} antialiased font-sans`}>
+      <body className={`${inter.variable} ${playfair.variable} antialiased font-sans overflow-x-hidden`}>
+        <TopBar />
+        <Navbar />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
