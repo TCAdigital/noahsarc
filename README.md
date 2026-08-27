@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Noah's Arc Foundation
 
-## Getting Started
+Institutional website for [Noah's Arc](https://noahsarc.org), a faith-based
+organization working in Kyenjojo District, Mid-Western Uganda, with a small CMS
+for the content team.
 
-First, run the development server:
+Built with Next.js 16 (App Router), React 19, Tailwind CSS v4 and Supabase.
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local   # optional, see "CMS" below
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site runs at <http://localhost:3000>. Without Supabase credentials it still
+works: every page falls back to the content checked into
+[`src/lib/data.ts`](src/lib/data.ts), and `/admin` explains what is missing.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/
+    (site)/        Public pages. Server Components; the site chrome lives in
+                   (site)/layout.tsx.
+    admin/         The CMS. Login, dashboard and its Server Actions.
+  components/      Shared UI. Client Components are the exception, not the rule.
+  lib/
+    data.ts        SiteContent type + the content the site ships with.
+    content.ts     Reads content from Supabase and merges it over the defaults.
+    supabase/      Browser, server and session-less Supabase clients.
+  proxy.ts         Guards /admin (this is Next 16's renamed middleware).
+scripts/
+  optimize-images.mjs   One-off asset pipeline, see "Images".
+supabase/
+  schema.sql       Tables, RLS policies and the editor allow-list.
+```
 
-## Learn More
+## CMS
 
-To learn more about Next.js, take a look at the following resources:
+1. Create a Supabase project and put its URL and anon key in `.env.local`.
+2. Run [`supabase/schema.sql`](supabase/schema.sql) in the SQL editor.
+3. Invite yourself under *Authentication > Users*, then allow-list the account:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```sql
+   insert into public.site_admins (user_id) values ('<your-user-uuid>');
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Sign in at `/admin`.
 
-## Deploy on Vercel
+Content is stored as a single JSON row. On save it is merged over the defaults,
+which drops unknown keys and rejects values whose type does not match the
+schema, so a malformed payload cannot corrupt the site. Fields added in a later
+deploy keep their default until someone edits them.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Access is checked in three places: `src/proxy.ts` redirects anonymous visitors,
+the dashboard re-verifies the session before rendering, and the Server Action
+re-verifies it again before writing (Server Actions are reachable by direct
+POST). Supabase RLS is the final gate.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Images
+
+Every asset the site ships with lives in `public/images` and is rendered through
+`next/image`. `scripts/optimize-images.mjs` is the pipeline that produced them:
+it renames files to role-based names, downscales anything wider than 2000px and
+re-encodes to progressive JPEG. Re-run it after adding raw photos, adding the
+new files to the `JOBS` table first.
+
+Editors can paste an image URL from any host into the CMS. Hosts listed in
+`images.remotePatterns` (`next.config.ts`) are optimized; anything else is
+served as-is by [`SiteImage`](src/components/SiteImage.tsx) rather than failing.
+
+## Scripts
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint |
