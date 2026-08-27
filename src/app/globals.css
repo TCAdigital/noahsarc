@@ -15,29 +15,15 @@ body {
   color: #1c1917; /* stone-900 */
 }
 
-@layer components {
-  .nav-scrolled {
-    @apply bg-white/95 backdrop-blur-md shadow-lg py-4;
-  }
-}
-
 /* Original Design Animations */
 @keyframes slowZoom {
     from { transform: scale(1); }
     to { transform: scale(1.1); }
 }
 
-.hero-bg-animate {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/Q9ytvOn.jpeg');
-    background-size: cover;
-    background-position: center;
+/* Applied to the hero <Image>; the photo itself comes from the CMS. */
+.animate-slow-zoom {
     animation: slowZoom 20s infinite alternate ease-in-out;
-    z-index: 0;
 }
 
 @keyframes floatPortrait {
@@ -58,10 +44,9 @@ body {
     background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
 }
 
-.sponsor-bg {
-    background: linear-gradient(to right, rgba(6, 78, 59, 0.98) 45%, rgba(6, 78, 59, 0.2) 100%), url('https://i.imgur.com/pEv0FFB.jpeg');
-    background-size: cover;
-    background-position: center;
+/* Tint laid over the sponsorship banner photo. */
+.sponsor-overlay {
+    background: linear-gradient(to right, rgba(6, 78, 59, 0.98) 45%, rgba(6, 78, 59, 0.2) 100%);
 }
 
 .parallax-bg {

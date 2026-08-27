@@ -1,7 +1,5 @@
-"use client";
-
-import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import Reveal from "@/components/Reveal";
 import { Cross, Heart, Scale, ShieldCheck, MessageSquareQuote } from "lucide-react";
 
 const values = [
@@ -48,24 +46,22 @@ export default function CoreValues() {
       {/* Hero Section */}
       <section className="relative py-24 bg-stone-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-40">
-          <img 
-            src="/images/Teachers and Staff.JPG" 
-            alt="Foundation" 
-            className="w-full h-full object-cover"
+          <Image
+            src="/images/teachers-and-staff.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
         </div>
         <div className="container mx-auto px-6 relative z-10 text-left">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
+          <Reveal className="max-w-3xl" trigger="mount">
             <span className="text-amber-500 font-bold uppercase text-xs tracking-[0.4em] mb-4 block text-left">Our Principles</span>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-left">Core Values</h1>
             <p className="text-lg text-stone-300 leading-relaxed max-w-xl text-left">
               At NOAH’S ARC, our core values guide everything we do, reflecting our beliefs, principles, and the foundation of our organization.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -84,14 +80,7 @@ export default function CoreValues() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {values.map((val, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`${val.color} p-12 rounded-[3rem] border border-stone-100 flex flex-col md:flex-row gap-8 items-start hover:shadow-xl transition-shadow`}
-              >
+              <Reveal key={i} className={`${val.color} p-12 rounded-[3rem] border border-stone-100 flex flex-col md:flex-row gap-8 items-start hover:shadow-xl transition-shadow`} delay={i * 0.1}>
                 <div className={`shrink-0 w-20 h-20 rounded-3xl bg-white flex items-center justify-center ${val.iconColor} shadow-sm`}>
                   <val.icon size={40} />
                 </div>
@@ -99,7 +88,7 @@ export default function CoreValues() {
                   <h3 className="text-2xl font-bold text-stone-900 mb-4">{val.title}</h3>
                   <p className="text-stone-600 leading-relaxed">{val.description}</p>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -107,27 +96,22 @@ export default function CoreValues() {
 
       {/* Quote Section with Parallax */}
       <section className="relative py-48 overflow-hidden bg-emerald-900">
-        <div 
+        <div
           className="absolute inset-0 bg-fixed bg-center bg-cover opacity-40 grayscale"
-          style={{ backgroundImage: 'url("/images/Teachers and Staff.JPG")' }}
+          style={{ backgroundImage: 'url("/images/teachers-and-staff.jpg")' }}
         ></div>
         <div className="absolute inset-0 bg-emerald-900/60 mix-blend-multiply"></div>
-        
+
         <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
+          <Reveal>
             <MessageSquareQuote size={60} className="mx-auto mb-10 text-emerald-400 opacity-80" />
             <h2 className="text-4xl md:text-5xl font-bold italic leading-tight text-white tracking-tight">
-              "We envision a community where every child thrives, individuals flourish economically, and conflicts are resolved peacefully."
+              “We envision a community where every child thrives, individuals flourish economically, and conflicts are resolved peacefully.”
             </h2>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

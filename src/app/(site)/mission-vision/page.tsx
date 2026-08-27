@@ -1,7 +1,5 @@
-"use client";
-
-import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import Reveal from "@/components/Reveal";
 import { Target, Eye, Shield, Users, Heart, Sprout } from "lucide-react";
 
 export default function MissionVision() {
@@ -11,24 +9,22 @@ export default function MissionVision() {
       {/* Hero Section */}
       <section className="relative py-24 bg-emerald-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <img 
-            src="/images/hero-mission.JPG" 
-            alt="Impact" 
-            className="w-full h-full object-cover"
+          <Image
+            src="/images/mission-hero.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
         </div>
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
+          <Reveal className="max-w-3xl" trigger="mount">
             <span className="text-amber-500 font-bold uppercase text-xs tracking-[0.4em] mb-4 block">Who We Are</span>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Mission & Vision</h1>
             <p className="text-lg text-stone-300 leading-relaxed max-w-xl">
               Our commitment to empowering the children of Kyenjojo and building a future of dignity and hope.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -36,23 +32,22 @@ export default function MissionVision() {
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative order-last lg:order-first"
-            >
+            <Reveal className="relative order-last lg:order-first">
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-50 rounded-full -z-10 animate-pulse"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1200&auto=format&fit=crop" 
-                alt="Our Mission" 
-                className="rounded-3xl shadow-2xl z-10 relative"
-              />
+              <div className="relative z-10 w-full aspect-[4/3] rounded-3xl shadow-2xl overflow-hidden">
+                <Image
+                  src="/images/gallery/gallery-03.jpg"
+                  alt="Children at a foundation programme"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="absolute -bottom-6 -right-6 bg-amber-500 text-white p-8 rounded-2xl shadow-xl z-20 hidden md:block">
                 <Target size={40} />
               </div>
-            </motion.div>
-            
+            </Reveal>
+
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-px bg-emerald-600"></div>
@@ -62,7 +57,7 @@ export default function MissionVision() {
                 Our Mission is to <span className="text-emerald-600">Empower</span> and <span className="text-emerald-600">Nurture</span>.
               </h2>
               <p className="text-lg text-stone-600 leading-relaxed mb-8">
-                Our mission is to empower orphans and vulnerable children in Kyenjojo District, Mid-Western Uganda, by providing access to quality education and creating a nurturing environment for their holistic development. 
+                Our mission is to empower orphans and vulnerable children in Kyenjojo District, Mid-Western Uganda, by providing access to quality education and creating a nurturing environment for their holistic development.
               </p>
               <div className="space-y-6">
                 <div className="flex gap-4">
@@ -95,39 +90,29 @@ export default function MissionVision() {
               </div>
             </div>
           </div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-16 p-10 bg-emerald-50 rounded-3xl border border-emerald-100 italic text-stone-700 leading-loose"
-          >
-            "Additionally, we are committed to promoting peace, human rights, and resolving conflicts at the family level, fostering harmony and social cohesion. Finally, we aim to foster spiritual growth among community members, creating an environment that nurtures faith, values, and personal well-being. Together, we envision a community where every child thrives, individuals flourish economically, conflicts are resolved peacefully, and spiritual growth is nurtured."
-          </motion.div>
+
+          <Reveal className="mt-16 p-10 bg-emerald-50 rounded-3xl border border-emerald-100 italic text-stone-700 leading-loose">
+            “Additionally, we are committed to promoting peace, human rights, and resolving conflicts at the family level, fostering harmony and social cohesion. Finally, we aim to foster spiritual growth among community members, creating an environment that nurtures faith, values, and personal well-being. Together, we envision a community where every child thrives, individuals flourish economically, conflicts are resolved peacefully, and spiritual growth is nurtured.”
+          </Reveal>
         </div>
       </section>
 
       {/* Vision Section - Parallax Style */}
       <section className="relative py-48 overflow-hidden bg-emerald-950">
-        <div 
+        <div
           className="absolute inset-0 bg-fixed bg-center bg-cover scale-110"
-          style={{ 
-            backgroundImage: 'url("/images/IMG_0297@-985416488.jpg")',
+          style={{
+            backgroundImage: 'url("/images/mission-banner.jpg")',
           }}
         ></div>
         <div className="absolute inset-0 bg-emerald-950/80 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900 via-transparent to-stone-900 opacity-40"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="inline-block p-4 bg-white/5 backdrop-blur-lg rounded-2xl mb-10 border border-white/10"
-            >
+            <Reveal className="inline-block p-4 bg-white/5 backdrop-blur-lg rounded-2xl mb-10 border border-white/10">
               <Eye size={48} className="text-amber-400" />
-            </motion.div>
+            </Reveal>
             <h2 className="text-xs uppercase font-black tracking-[0.5em] text-amber-500 mb-8">The Vision</h2>
             <p className="text-4xl md:text-6xl font-bold leading-tight mb-12 tracking-tight text-white">
               To have a community that is free from <span className="text-amber-400 italic">hunger</span>, poverty, illiteracy, preventable diseases and <span className="text-emerald-400 italic">spiritually empowered</span>.
@@ -162,7 +147,6 @@ export default function MissionVision() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

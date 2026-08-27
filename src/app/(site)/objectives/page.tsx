@@ -1,7 +1,5 @@
-"use client";
-
-import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import Reveal from "@/components/Reveal";
 import { GraduationCap, Sprout, ShieldCheck, Heart, Cross, Plane, Users, HandHeart } from "lucide-react";
 import Link from "next/link";
 
@@ -49,24 +47,22 @@ export default function OurObjectives() {
       {/* Hero Section */}
       <section className="relative py-24 bg-stone-900 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <img 
-            src="/images/IMG_2871@2109968384.jpg" 
-            alt="Community" 
-            className="w-full h-full object-cover"
+          <Image
+            src="/images/objectives-feature.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
         </div>
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
-          >
+          <Reveal className="max-w-3xl" trigger="mount">
             <span className="text-amber-500 font-bold uppercase text-xs tracking-[0.4em] mb-4 block">Strategic Goals</span>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Our Objectives</h1>
             <p className="text-lg text-stone-300 leading-relaxed max-w-xl">
               Defining our path towards a sustainable and empowered community in Kyenjojo District.
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
@@ -75,20 +71,13 @@ export default function OurObjectives() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {objectives.map((obj, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`${obj.color} p-10 rounded-3xl border border-stone-100 hover:shadow-2xl transition-all duration-500 group`}
-              >
+              <Reveal key={i} className={`${obj.color} p-10 rounded-3xl border border-stone-100 hover:shadow-2xl transition-all duration-500 group`} delay={i * 0.1}>
                 <div className={`w-14 h-14 rounded-2xl bg-white flex items-center justify-center ${obj.iconColor} shadow-sm mb-6 group-hover:scale-110 transition-transform`}>
                   <obj.icon size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-stone-900 mb-4">{obj.title}</h3>
                 <p className="text-stone-600 text-sm leading-relaxed">{obj.text}</p>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -101,7 +90,7 @@ export default function OurObjectives() {
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">How You Can Help</h2>
             <p className="text-stone-500">Choose your way to make an impact today.</p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Join Trip */}
             <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-stone-100 text-center flex flex-col items-center">
@@ -134,7 +123,7 @@ export default function OurObjectives() {
               </div>
               <h4 className="text-xl font-bold mb-4">Support Our Work</h4>
               <p className="text-stone-500 text-sm mb-8 flex-grow">Your support provides education and healthcare to those in need.</p>
-              <Link href="/#donate" className="w-full bg-stone-900 text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-stone-800 transition">
+              <Link href="/#contact" className="w-full bg-stone-900 text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-stone-800 transition">
                 Donate Now
               </Link>
             </div>
@@ -142,7 +131,6 @@ export default function OurObjectives() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }
