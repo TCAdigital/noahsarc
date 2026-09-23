@@ -1,4 +1,4 @@
--- Noah's Arc Foundation CMS schema.
+-- Noah's Arc Organization CMS schema.
 -- Run this once in the Supabase SQL editor (or via `supabase db push`).
 
 -- ---------------------------------------------------------------------------

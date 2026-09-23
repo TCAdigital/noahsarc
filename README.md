@@ -1,4 +1,4 @@
-# Noah's Arc Foundation
+# Noah's Arc Organization
 
 Institutional website for [Noah's Arc](https://noahsarc.org), a faith-based
 organization working in Kyenjojo District, Mid-Western Uganda, with a small CMS
