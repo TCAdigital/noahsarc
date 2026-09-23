@@ -1,6 +1,47 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
-import { Target, Eye, Shield, Users, Heart, Sprout } from "lucide-react";
+import {
+  Droplets,
+  Eye,
+  Heart,
+  HeartHandshake,
+  Shield,
+  Sparkles,
+  Sprout,
+  Target,
+  Users,
+} from "lucide-react";
+
+const PILLARS = [
+  {
+    title: "Sustainable Growth",
+    description:
+      "We support families and communities by promoting sustainable agriculture and opportunities for income generation and greater self-reliance.",
+    icon: Sprout,
+    color: "bg-emerald-100 text-emerald-700",
+  },
+  {
+    title: "Peace & Healthy Families",
+    description:
+      "We work to strengthen families, promote peaceful relationships, and support conflict resolution within homes and communities.",
+    icon: HeartHandshake,
+    color: "bg-amber-100 text-amber-700",
+  },
+  {
+    title: "Health & Clean Water",
+    description:
+      "We promote better health through education, disease prevention, and access to clean water, including the construction of boreholes and shallow wells.",
+    icon: Droplets,
+    color: "bg-blue-100 text-blue-700",
+  },
+  {
+    title: "Spiritual Well-being",
+    description:
+      "We nurture spiritual growth through faith-based programs, church leader training, conferences, youth activities, marriage and family support, and spiritual mentorship.",
+    icon: Sparkles,
+    color: "bg-purple-100 text-purple-700",
+  },
+];
 
 export default function MissionVision() {
   return (
@@ -22,7 +63,7 @@ export default function MissionVision() {
             <span className="text-amber-500 font-bold uppercase text-xs tracking-[0.4em] mb-4 block">Who We Are</span>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Mission & Vision</h1>
             <p className="text-lg text-stone-300 leading-relaxed max-w-xl">
-              Our commitment to empowering the children of Kyenjojo and building a future of dignity and hope.
+              Our commitment to empowering children, strengthening families, and building communities rooted in dignity, hope, and self-reliance.
             </p>
           </Reveal>
         </div>
@@ -54,46 +95,37 @@ export default function MissionVision() {
                 <span className="text-emerald-700 font-bold uppercase text-xs tracking-widest">Our Commitment</span>
               </div>
               <h2 className="text-4xl font-bold text-emerald-900 mb-8 tracking-tight leading-tight">
-                Our Mission is to <span className="text-emerald-600">Empower</span> and <span className="text-emerald-600">Nurture</span>.
+Our Mission is to <span className="text-emerald-600">Transform</span> Communities.
               </h2>
               <p className="text-lg text-stone-600 leading-relaxed mb-8">
-                Our mission is to empower orphans and vulnerable children in Kyenjojo District, Mid-Western Uganda, by providing access to quality education and creating a nurturing environment for their holistic development.
+                To transform communities through quality education and holistic
+                care, sustainable livelihoods and agriculture, improved health and
+                access to clean water, strong and peaceful families, and spiritual
+                growth — helping individuals and communities become self-reliant
+                and thrive.
               </p>
               <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-700">
-                    <Sprout size={24} />
+                {PILLARS.map((pillar) => (
+                  <div key={pillar.title} className="flex gap-4">
+                    <div
+                      className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${pillar.color}`}
+                    >
+                      <pillar.icon size={24} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-stone-900 mb-1">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-sm text-stone-500 leading-relaxed">
+                        {pillar.description}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-stone-900 mb-1">Sustainable Growth</h4>
-                    <p className="text-sm text-stone-500">We strive to enhance income generation in the region by promoting sustainable agriculture practices.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-700">
-                    <Shield size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-stone-900 mb-1">Peace & Human Rights</h4>
-                    <p className="text-sm text-stone-500">Committed to promoting peace and resolving conflicts at the family level.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-700">
-                    <Users size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-stone-900 mb-1">Spiritual Well-being</h4>
-                    <p className="text-sm text-stone-500">Foster spiritual growth among community members, creating an environment that nurtures faith.</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <Reveal className="mt-16 p-10 bg-emerald-50 rounded-3xl border border-emerald-100 italic text-stone-700 leading-loose">
-            “Additionally, we are committed to promoting peace, human rights, and resolving conflicts at the family level, fostering harmony and social cohesion. Finally, we aim to foster spiritual growth among community members, creating an environment that nurtures faith, values, and personal well-being. Together, we envision a community where every child thrives, individuals flourish economically, conflicts are resolved peacefully, and spiritual growth is nurtured.”
-          </Reveal>
         </div>
       </section>
 

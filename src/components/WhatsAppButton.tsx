@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const MESSAGE =
-  "Hello! I’m interested in learning more about Noah’s Arc Foundation.";
+  "Hello! I’m interested in learning more about Noah’s Arc Organization.";
 
 export default function WhatsAppButton({ phone }: { phone: string }) {
   const number = phone.replace(/\D/g, "");

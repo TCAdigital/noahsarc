@@ -4,6 +4,7 @@ import {
   AlertTriangle,
   CheckCircle,
   ExternalLink,
+  Inbox,
   LogOut,
   Plus,
   RotateCcw,
@@ -28,7 +29,14 @@ const LONG_TEXT_KEY = /(text|description|copy|welcome|subtitle|address)/i;
 /** Values the CMS may only pick from a list. */
 const ENUM_OPTIONS: Record<string, string[]> = {
   theme: ["dark", "amber", "blue", "green"],
-  icon: ["school", "university", "graduation-cap", "award"],
+  icon: [
+    "users",
+    "school",
+    "university",
+    "graduation-cap",
+    "award",
+    "heart-handshake",
+  ],
 };
 
 const SECTION_LABELS: Record<string, string> = {
@@ -41,6 +49,7 @@ const SECTION_LABELS: Record<string, string> = {
   projects: "Projects",
   sponsorship: "Sponsorship",
   sponsor: "Sponsor a child",
+  newsletter: "Newsletter",
   contact: "Contact",
   footer: "Footer",
 };
@@ -191,6 +200,12 @@ export default function ContentEditor({
         </nav>
 
         <div className="pt-6 space-y-1">
+          <Link
+            href="/admin/messages"
+            className="flex items-center gap-3 px-4 py-3 text-stone-400 hover:bg-stone-50 rounded-xl transition font-bold text-[10px] uppercase tracking-widest"
+          >
+            <Inbox size={14} /> Messages
+          </Link>
           <Link
             href="/"
             target="_blank"

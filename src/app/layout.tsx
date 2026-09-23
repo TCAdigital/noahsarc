@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Noah’s Arc Foundation",
+  title: "Noah’s Arc Organization",
   description:
     "A faith-based organization fighting hunger, poverty and illiteracy in Kyenjojo District, Mid-Western Uganda.",
 };

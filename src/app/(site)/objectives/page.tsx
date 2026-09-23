@@ -3,6 +3,9 @@ import Reveal from "@/components/Reveal";
 import { GraduationCap, Sprout, ShieldCheck, Heart, Cross, Plane, Users, HandHeart } from "lucide-react";
 import Link from "next/link";
 
+import SmartLink from "@/components/SmartLink";
+import { DONATE_URL } from "@/lib/links";
+
 const objectives = [
   {
     title: "Education & Living",
@@ -98,9 +101,9 @@ export default function OurObjectives() {
                 <Plane size={32} />
               </div>
               <h4 className="text-xl font-bold mb-4">Join a Trip</h4>
-              <p className="text-stone-500 text-sm mb-8 flex-grow">Be part of our mission on the ground. Experience the impact firsthand.</p>
-              <Link href="/future-trips" className="w-full bg-blue-600 text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-700 transition">
-                View Trips
+              <p className="text-stone-500 text-sm mb-8 flex-grow">Be part of our mission on the ground. Experience the work firsthand.</p>
+              <Link href="/upcoming-visits" className="w-full bg-blue-600 text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-700 transition">
+                View Visits
               </Link>
             </div>
 
@@ -111,7 +114,7 @@ export default function OurObjectives() {
               </div>
               <h4 className="text-xl font-bold mb-4">Partner with Us</h4>
               <p className="text-emerald-100/60 text-sm mb-8 flex-grow">Global organizations working together for a lasting change.</p>
-              <Link href="/#contact" className="w-full bg-amber-500 text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-amber-600 transition">
+              <Link href="/contact" className="w-full bg-amber-500 text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-amber-600 transition">
                 Get Involved
               </Link>
             </div>
@@ -123,9 +126,9 @@ export default function OurObjectives() {
               </div>
               <h4 className="text-xl font-bold mb-4">Support Our Work</h4>
               <p className="text-stone-500 text-sm mb-8 flex-grow">Your support provides education and healthcare to those in need.</p>
-              <Link href="/#contact" className="w-full bg-stone-900 text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-stone-800 transition">
+              <SmartLink href={DONATE_URL} className="w-full inline-block bg-stone-900 text-white py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-stone-800 transition">
                 Donate Now
-              </Link>
+              </SmartLink>
             </div>
           </div>
         </div>

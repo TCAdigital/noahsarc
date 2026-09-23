@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { GraduationCap, ArrowRight, CheckCircle2 } from "lucide-react";
-import Link from "next/link";
+
+import SmartLink from "@/components/SmartLink";
+import { EDUCATION_FUND_DONATE_URL } from "@/lib/links";
 
 export default function EducationFunds() {
   return (
@@ -22,7 +24,7 @@ export default function EducationFunds() {
             <span className="text-amber-500 font-bold uppercase text-xs tracking-[0.4em] mb-4 block">Our Projects</span>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Education Fund</h1>
             <p className="text-lg text-stone-300 leading-relaxed max-w-xl">
-              Supporting the holistic development of our children and building a foundation for lifelong success.
+              Helping students access the support they need to learn, grow, and continue their education with dignity.
             </p>
           </Reveal>
         </div>
@@ -51,7 +53,7 @@ export default function EducationFunds() {
                   </div>
                   <div>
                     <div className="text-2xl font-black text-stone-900">100%</div>
-                    <div className="text-[10px] uppercase tracking-widest text-stone-400 font-bold">Direct Impact</div>
+                    <div className="text-[10px] uppercase tracking-widest text-stone-400 font-bold">Goes to programs</div>
                   </div>
                 </div>
               </div>
@@ -60,10 +62,10 @@ export default function EducationFunds() {
             {/* Text Right */}
             <Reveal>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-8 tracking-tight">
-                Vital Support for <span className="text-emerald-600 italic">Holistic Growth</span>
+                Supporting Students at <span className="text-emerald-600 italic">Every Stage</span>
               </h2>
               <p className="text-xl text-stone-600 leading-relaxed mb-10">
-                This vital fund supports the holistic development of our children, covering essential needs that form the basis of a dignified life.
+                The Noah’s Arc Education Fund helps students access the support they need to learn, grow, and continue their education with dignity. It covers the everyday essentials that make school possible.
               </p>
 
               <ul className="space-y-6 mb-12">
@@ -83,9 +85,18 @@ export default function EducationFunds() {
                 ))}
               </ul>
 
-              <Link href="/#contact" className="inline-flex items-center gap-3 bg-emerald-700 text-white px-10 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-emerald-800 transition shadow-xl">
+              <p className="text-lg font-bold text-emerald-800 leading-relaxed mb-10 border-l-4 border-amber-500 pl-6">
+                100% of every donation goes directly toward supporting Noah’s
+                Arc programs and the students, families, and communities they
+                serve.
+              </p>
+
+              <SmartLink
+                href={EDUCATION_FUND_DONATE_URL}
+                className="inline-flex items-center gap-3 bg-emerald-700 text-white px-10 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-emerald-800 transition shadow-xl"
+              >
                 Support the Fund <ArrowRight size={18} />
-              </Link>
+              </SmartLink>
             </Reveal>
           </div>
         </div>
@@ -100,8 +111,8 @@ export default function EducationFunds() {
         <div className="absolute inset-0 bg-emerald-950/70 mix-blend-multiply"></div>
 
         <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold italic text-white leading-tight">
-            “Investing in education is the most effective way to break the cycle of poverty.”
+          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            Investing in education is the most effective way to break the cycle of poverty.
           </h2>
         </div>
       </section>

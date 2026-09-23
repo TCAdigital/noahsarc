@@ -1,8 +1,9 @@
+import { ArrowRight, BookOpen, Home, ShieldCheck, Users } from "lucide-react";
 import Image from "next/image";
-import ProgressBar from "@/components/ProgressBar";
+
 import Reveal from "@/components/Reveal";
-import { Home, ShieldCheck, BookOpen, Users, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import SmartLink from "@/components/SmartLink";
+import { DORMITORY_DONATE_URL } from "@/lib/links";
 
 export default function GirlsDormitory() {
   return (
@@ -23,7 +24,7 @@ export default function GirlsDormitory() {
             <span className="text-amber-500 font-bold uppercase text-xs tracking-[0.4em] mb-4 block">Construction Projects</span>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Girls’ Dormitory</h1>
             <p className="text-lg text-stone-300 leading-relaxed max-w-xl">
-              Building a safe, secure, and nurturing home for our girls and their mentors.
+              Building a safe, secure, and nurturing home for 250 girls.
             </p>
           </Reveal>
         </div>
@@ -51,8 +52,8 @@ export default function GirlsDormitory() {
                     <Users size={24} />
                   </div>
                   <div>
-                    <div className="text-2xl font-black text-stone-900">271</div>
-                    <div className="text-[10px] uppercase tracking-widest text-stone-400 font-bold">Residents Capacity</div>
+                    <div className="text-2xl font-black text-stone-900">250</div>
+                    <div className="text-[10px] uppercase tracking-widest text-stone-400 font-bold">Girls’ Capacity</div>
                   </div>
                 </div>
               </div>
@@ -61,7 +62,7 @@ export default function GirlsDormitory() {
             {/* Text Right */}
             <Reveal>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-8 tracking-tight">
-                A Foundation for <span className="text-emerald-600 italic">Safety & Well-being</span>
+                A <span className="text-emerald-600 italic">Safe Place</span> to Live and Learn
               </h2>
               <p className="text-xl text-stone-600 leading-relaxed mb-10">
                 Our current dorms are overcrowded, compromising our girls’ health, safety, and well-being. The new dormitory is a direct response to this urgent need.
@@ -74,7 +75,7 @@ export default function GirlsDormitory() {
                   </div>
                   <div>
                     <h3 className="font-bold text-stone-900 mb-1">Comfortable Living</h3>
-                    <p className="text-stone-500">A spacious environment for 250 girls and 21 female teachers.</p>
+                    <p className="text-stone-500">A spacious living environment designed to accommodate 250 girls safely and comfortably.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -97,26 +98,50 @@ export default function GirlsDormitory() {
                 </div>
               </div>
 
-              <Link href="/#contact" className="inline-flex items-center gap-3 bg-emerald-700 text-white px-10 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-emerald-800 transition shadow-xl mb-12">
+              <SmartLink
+                href={DORMITORY_DONATE_URL}
+                className="inline-flex items-center gap-3 bg-emerald-700 text-white px-10 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-emerald-800 transition shadow-xl mb-12"
+              >
                 Help Build the Home <ArrowRight size={18} />
-              </Link>
+              </SmartLink>
 
-              {/* Construction Progress Bar */}
+              {/* Project status */}
               <div className="p-8 bg-stone-50 rounded-[2rem] border border-stone-100 shadow-sm">
-                <div className="flex justify-between items-end mb-6">
+                <div className="flex flex-wrap justify-between items-end gap-6 mb-8">
                   <div>
-                    <span className="text-emerald-700 font-bold uppercase text-[10px] tracking-widest block mb-2">Project Milestone</span>
-                    <h3 className="text-xl font-bold text-stone-900">Construction Progress</h3>
+                    <span className="text-emerald-700 font-bold uppercase text-[10px] tracking-widest block mb-2">Project Status</span>
+                    <h3 className="text-xl font-bold text-stone-900">Phase 3 of Construction</h3>
                   </div>
                   <div className="text-right">
-                    <span className="text-3xl font-black text-emerald-600 tracking-tighter">50%</span>
+                    <span className="text-3xl font-black text-emerald-600 tracking-tighter">$115,906.34</span>
+                    <span className="block text-[10px] uppercase font-bold text-stone-400 tracking-widest mt-1">Still needed</span>
                   </div>
                 </div>
-                <ProgressBar value={50} />
-                <div className="flex justify-between mt-4">
-                  <span className="text-[9px] uppercase font-bold text-stone-400 tracking-widest">Groundwork</span>
-                  <span className="text-[9px] uppercase font-bold text-stone-400 tracking-widest">Completion</span>
-                </div>
+
+                <ol className="flex items-center gap-2 mb-6">
+                  {[1, 2, 3].map((phase) => (
+                    <li key={phase} className="flex-1">
+                      <div
+                        className={`h-2 rounded-full ${
+                          phase < 3 ? "bg-emerald-600" : "bg-amber-500"
+                        }`}
+                      />
+                      <span
+                        className={`block mt-3 text-[9px] uppercase font-bold tracking-widest ${
+                          phase === 3 ? "text-amber-600" : "text-stone-400"
+                        }`}
+                      >
+                        Phase {phase}
+                        {phase === 3 ? " · current" : ""}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+
+                <p className="text-sm text-stone-600 leading-relaxed">
+                  The girls’ dormitory is now in Phase 3 of construction, with
+                  $115,906.34 still needed to complete the project.
+                </p>
               </div>
             </Reveal>
           </div>
@@ -126,8 +151,8 @@ export default function GirlsDormitory() {
       {/* Quote Section - Solid Green */}
       <section className="relative py-48 bg-emerald-950 text-white">
         <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold italic leading-tight">
-            “A safe home is the first step toward a bright future for every child.”
+          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+            A safe home is the first step toward a bright future for every child.
           </h2>
         </div>
       </section>

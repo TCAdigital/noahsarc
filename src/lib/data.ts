@@ -13,7 +13,13 @@ export type CtaLink = {
 export type PartnerTheme = "dark" | "amber" | "blue" | "green";
 
 /** Fixed icon set for the sponsorship counters. */
-export type StatIcon = "school" | "university" | "graduation-cap" | "award";
+export type StatIcon =
+  | "users"
+  | "school"
+  | "university"
+  | "graduation-cap"
+  | "award"
+  | "heart-handshake";
 
 export type SiteContent = {
   topBar: {
@@ -23,18 +29,19 @@ export type SiteContent = {
     socials: {
       facebook: string;
       instagram: string;
-      twitter: string;
     };
   };
   hero: {
     title: string;
     description: string;
+    closing: string;
     backgroundImage: string;
     primaryCta: CtaLink;
     secondaryCta: CtaLink;
   };
   mission: {
     title: string;
+    teaser: string;
     welcome: string;
     welcomeText: string;
     missionTitle: string;
@@ -46,6 +53,8 @@ export type SiteContent = {
   whatWeDo: {
     title: string;
     subtitle: string;
+    impact: string;
+    intro: string;
     items: {
       title: string;
       description: string;
@@ -98,16 +107,24 @@ export type SiteContent = {
     footerText: string;
     cta: CtaLink;
   };
+  newsletter: {
+    title: string;
+    description: string;
+    buttonText: string;
+    consent: string;
+  };
   contact: {
     title: string;
     subtitle: string;
-    mapEmbedUrl: string;
+    locationLine: string;
+    mapUrl: string;
     offices: {
       title: string;
       organisation: string;
       people: string;
       address: string;
       phones: string[];
+      whatsapp: string;
       emails: string[];
     }[];
   };
@@ -121,62 +138,70 @@ export type SiteContent = {
 export const defaultSiteContent: SiteContent = {
   topBar: {
     address: "Kyenjojo, Uganda",
-    phone: "+256 701 117410",
-    email: "info@noahsarc.org",
-    // Empty means "no account yet" -- those icons are simply not rendered.
+    phone: "+256 701 117 410",
+    email: "kenapuuli@gmail.com",
+    // Empty means "no account linked yet" -- those icons are not rendered.
     socials: {
       facebook: "",
       instagram: "",
-      twitter: "",
     },
   },
   hero: {
-    title: "With your help, we can change the life stories of many children.",
+    title:
+      "Every Child Deserves Hope. Every Community Deserves the Opportunity to Thrive.",
     description:
-      "Please do not wait to get involved with this incredible opportunity for these children. Please continue to consider and spread to word about the opportunity to sponsor children and give them a supported future!",
+      "Since 2009, Noah’s Arc Organization has been transforming lives in Kyenjojo, Uganda. Born from founders Kenneth and Beatrice Kabagambe’s own challenging life experiences and their desire to create a different future for others, Noah’s Arc walks alongside vulnerable children, families, and communities — building hope, creating opportunity, strengthening self-reliance, and nurturing spiritual growth.",
+    closing:
+      "Partner with us on this journey of transformation, helping children grow, families flourish, and communities thrive.",
     backgroundImage: "/images/home-hero.jpg",
-    primaryCta: { text: "Current Projects", href: "#edu-funds" },
+    primaryCta: { text: "Current Projects", href: "#edu-fund" },
     secondaryCta: { text: "Our Mission", href: "#mission" },
   },
   mission: {
     title: "Mission And Vision",
+    teaser:
+      "Our commitment to empowering children, strengthening families, and building communities rooted in dignity, hope, and self-reliance.",
     welcome: "Welcome to Noah’s Arc",
     welcomeText:
-      "NOAH’S ARC is a faith-based organization operating in Kyenjojo District, Mid-Western Uganda. It focuses on implementing programs aimed at fighting and eradicating hunger, poverty, illiteracy, and exposure to preventable diseases to all unconditionally without basing on their religion, race, and political affiliation. It was founded by Kenneth and Beatrice in November 2008 after realizing that the majority of the population in Kyenjojo District lives below the poverty line and is thus exposed to hunger, poverty, illiteracy, and preventable diseases.",
+      "Noah’s Arc Organization is a faith-based organization operating in Kyenjojo District, Mid-Western Uganda. It focuses on implementing programs aimed at fighting and eradicating hunger, poverty, illiteracy, and exposure to preventable diseases to all unconditionally without basing on their religion, race, and political affiliation. It was founded by Kenneth and Beatrice in November 2008 after realizing that the majority of the population in Kyenjojo District lives below the poverty line and is thus exposed to hunger, poverty, illiteracy, and preventable diseases.",
     missionTitle: "Our Mission",
     missionText:
-      "Our mission is to empower orphans and vulnerable children in Kyenjojo District, Mid-Western Uganda, by providing access to quality education and creating a nurturing environment for their holistic development. We strive to enhance income generation in the region by promoting sustainable agriculture practices and empowering individuals with the necessary skills and resources. Additionally, we are committed to promoting peace, human rights, and resolving conflicts at the family level, fostering harmony and social cohesion. Finally, we aim to foster spiritual growth among community members, creating an environment that nurtures faith, values, and personal well-being. Together, we envision a community where every child thrives, individuals flourish economically, conflicts are resolved peacefully, and spiritual growth is nurtured.",
+      "To transform communities through quality education and holistic care, sustainable livelihoods and agriculture, improved health and access to clean water, strong and peaceful families, and spiritual growth — helping individuals and communities become self-reliant and thrive.",
     visionTitle: "Vision",
     visionText:
       "To have a community that is free from hunger, poverty, illiteracy, preventable diseases and spiritually empowered.",
     image: "/images/mission-portrait.jpg",
   },
   whatWeDo: {
-    title: "What we do",
-    subtitle: "Passionate About Making a Difference in communities.",
+    title: "What We Do",
+    subtitle: "Passionate about making a difference in communities.",
+    impact:
+      "Fighting poverty, hunger, and illiteracy through education, sustainable livelihoods, health initiatives, and community development.",
+    intro:
+      "Our work is rooted in long-term, community-based solutions that help children, families, and communities build stronger and more self-reliant futures. Through education, health initiatives, sustainable livelihoods, family support, and spiritual empowerment, we work alongside the people of Kyenjojo District and surrounding areas to create lasting change.",
     items: [
       {
         title: "Education Support",
         description:
-          "Educating kids for a better future and a better life in the communities",
+          "Educating children for a better future and a better life in their communities.",
         image: "/images/what-we-do-education.jpg",
       },
       {
-        title: "Spiritual Growth",
+        title: "Spiritual Empowerment",
         description:
-          "Nourishing and helping children in their relationship with God",
+          "Nurturing faith, character, and hope through church leader training, youth programs, and family support.",
         image: "/images/what-we-do-spiritual.jpg",
       },
       {
         title: "Health Enhancement",
         description:
-          "Protecting children and the community from preventable diseases",
+          "Protecting children and the community from preventable diseases.",
         image: "/images/what-we-do-health.jpg",
       },
     ],
   },
   gallery: {
-    title: "See Our Noah’s Arc Photo Gallery!",
+    title: "See Our Noah’s Arc Photo Gallery",
     // The first four are the ones shown before a visitor expands the grid.
     images: [
       "/images/home-gallery-01.jpg",
@@ -197,7 +222,7 @@ export const defaultSiteContent: SiteContent = {
     title: "Our Partners",
     subtitle:
       "Working together with global organizations to create lasting impact.",
-    cta: { text: "Become a partner", href: "#contact" },
+    cta: { text: "Become a partner", href: "/contact" },
     list: [
       { name: "Emmaus Church", subName: "", theme: "dark" },
       { name: "ThinSpace Africa", subName: "", theme: "amber" },
@@ -211,30 +236,31 @@ export const defaultSiteContent: SiteContent = {
       "Empowering the community through sustainable development and educational support.",
     items: [
       {
-        id: "edu-funds",
-        title: "Education Funds",
+        id: "edu-fund",
+        title: "Education Fund",
         description:
-          "The Noah’s Arc Foundation Education Fund provides scholarships and school supplies to youth in underserved communities.",
+          "The Noah’s Arc Education Fund helps students access the support they need to learn, grow, and continue their education with dignity.",
         image: "/images/education-fund.jpg",
         status: "Active",
-        cta: { text: "Donate to this Fund", href: "/education-funds" },
+        cta: { text: "Support the Fund", href: "/education-fund" },
       },
       {
         id: "dormitory",
         title: "Girls’ Dormitory Construction",
         description:
-          "We are currently building safe, secure housing for young girls attending our programs.",
+          "We are building a safe, secure, and nurturing home for 250 girls. The dormitory is now in Phase 3 of construction.",
         image: "/images/girls-dormitory-construction.jpg",
-        status: "In Progress",
-        cta: { text: "Support Construction", href: "/girls-dormitory" },
+        status: "Phase 3",
+        cta: { text: "Help Build the Home", href: "/girls-dormitory" },
       },
     ],
   },
   sponsorship: {
-    title: "Sponsorship changes Everything",
-    subtitle: "Get involved with our work by joining our sponsorship program!",
+    title: "Sponsorship Changes Everything",
+    subtitle:
+      "Your sponsorship helps students access education, health support, daily care, and opportunities that can change the course of their future.",
     description:
-      "You can also support our work with your donation to one of our other current projects. NOAH’S ARC’s efforts are crucial in uplifting the community and improving the quality of life for the residents. By providing assistance in the areas of hunger, poverty, illiteracy, and preventable diseases, the organization plays a vital role in creating a better future for the people it serves.",
+      "We invite you to be part of this opportunity to give children hope for a supported future. By sponsoring a child, sharing our work with others, or supporting Noah’s Arc in any way you can, you help us continue walking alongside children and families as they build a better future.",
     image: "/images/sponsorship-impact.jpg",
     cta: { text: "Sponsor a child", href: "/sponsor" },
   },
@@ -242,43 +268,50 @@ export const defaultSiteContent: SiteContent = {
     title: "Sponsor a Child",
     subtitle: "Make a Difference",
     description:
-      "Noah’s ARC is currently serving 500 children and they are at different levels of education:",
+      "Noah’s Arc currently supports 531 students at different levels of education:",
     backgroundImage: "/images/sponsor-banner.jpg",
     stats: [
-      { label: "Primary Level", value: 427, icon: "school" },
-      { label: "Secondary", value: 60, icon: "university" },
-      { label: "Tertiary & University", value: 20, icon: "graduation-cap" },
-      { label: "Graduated", value: 25, icon: "award" },
+      { label: "Currently Serving", value: 531, icon: "users" },
+      { label: "Primary Level", value: 436, icon: "school" },
+      { label: "Secondary Level", value: 77, icon: "university" },
+      { label: "Tertiary & University", value: 18, icon: "graduation-cap" },
+      { label: "Graduated & Self-Sustaining", value: 62, icon: "award" },
+      { label: "Returned to Serve", value: 9, icon: "heart-handshake" },
     ],
     footerText:
-      "25 of our Children have already graduated and are self-sustaining to their families and the community.",
+      "62 of our students have graduated and are now self-sustaining, supporting their families and their community. Nine of them have returned to work with Noah’s Arc and support the next generation.",
     cta: { text: "Become a Sponsor", href: "/sponsor" },
+  },
+  newsletter: {
+    title: "Stay Connected",
+    description:
+      "Receive stories, project updates, and news from Noah’s Arc.",
+    buttonText: "Sign Up for Updates",
+    consent:
+      "By subscribing, you agree to receive news, project updates, stories, and occasional fundraising communications from Noah’s Arc Organization. You may unsubscribe at any time. Please see our Privacy Policy for information about how we use and protect your personal information.",
   },
   contact: {
     title: "Contact Us",
-    subtitle:
-      "We’d love to hear from you. Reach out to our teams in Uganda or the USA.",
-    mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.1678129037!2d30.640523!3d0.613345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177651a5a0f5a5a5%3A0x5a5a5a5a5a5a5a5!2sKyenjojo%2C%20Uganda!5e0!3m2!1sen!2sbr!4v1715473000000!5m2!1sen!2sbr",
+    subtitle: "We’d love to hear from you.",
+    locationLine: "Located in Kyenjojo District, Mid-Western Uganda.",
+    mapUrl: "https://www.google.com/maps/place/Kyenjojo,+Uganda",
     offices: [
       {
         title: "Head Office Uganda",
         organisation: "Noah’s Arc Organization",
-        people: "Kenneth Kabagambe and Beatrice Kabagambe",
+        people: "Kenneth and Beatrice Kabagambe",
         address: "P.O. Box 1083 Kyenjojo, Uganda",
-        phones: ["+256 701 117410", "0782880500 / 0700749178"],
-        emails: [
-          "info@noahsarc.org",
-          "Kenapuuli@gmail.com",
-          "beatricekunihira@yahoo.com",
-        ],
+        phones: ["+256 701 117 410"],
+        whatsapp: "+256 701 117 410",
+        emails: ["kenapuuli@gmail.com"],
       },
       {
         title: "Strategic Partner in USA",
         organisation: "ThinSpace Africa",
         people: "",
-        address: "Office and mail: 50 Buckskin Road, Bell Canyon, CA 91307",
-        phones: ["8186875556"],
+        address: "50 Buckskin Road, Bell Canyon, CA 91307",
+        phones: ["+1 626 400 7075"],
+        whatsapp: "",
         emails: ["info@thinspaceafrica.org"],
       },
     ],
@@ -286,7 +319,7 @@ export const defaultSiteContent: SiteContent = {
   footer: {
     logo: "/images/logo.png",
     description:
-      "A 501(c)(3) non-profit organization helping children choose peace through the power of expression.",
-    copy: "© 2026 Noah’s Arc Foundation. All Rights Reserved. | Development by TCA Digital",
+      "A faith-based organization in Kyenjojo District, Mid-Western Uganda, walking alongside vulnerable children, families, and communities.",
+    copy: "© 2026 Noah’s Arc Organization. All Rights Reserved. | Development by TCA Digital",
   },
 };

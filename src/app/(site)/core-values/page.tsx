@@ -105,8 +105,8 @@ export default function CoreValues() {
         <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
           <Reveal>
             <MessageSquareQuote size={60} className="mx-auto mb-10 text-emerald-400 opacity-80" />
-            <h2 className="text-4xl md:text-5xl font-bold italic leading-tight text-white tracking-tight">
-              “We envision a community where every child thrives, individuals flourish economically, and conflicts are resolved peacefully.”
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight text-white tracking-tight">
+              We envision a community where every child thrives, individuals flourish economically, and conflicts are resolved peacefully.
             </h2>
           </Reveal>
         </div>

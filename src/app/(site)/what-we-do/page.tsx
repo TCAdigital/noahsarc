@@ -15,12 +15,15 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import SmartLink from "@/components/SmartLink";
+import { DONATE_URL } from "@/lib/links";
+
 export default function WhatWeDo() {
   const educationStats = [
-    { label: "Primary Level", value: "427", icon: School, color: "bg-emerald-50 text-emerald-600" },
-    { label: "Secondary Level", value: "50", icon: University, color: "bg-amber-50 text-amber-600" },
-    { label: "Tertiary & University", value: "11", icon: GraduationCap, color: "bg-blue-50 text-blue-600" },
-    { label: "Already Graduated", value: "20", icon: Sparkles, color: "bg-purple-50 text-purple-600" },
+    { label: "Primary Level", value: "436", icon: School, color: "bg-emerald-50 text-emerald-600" },
+    { label: "Secondary Level", value: "77", icon: University, color: "bg-amber-50 text-amber-600" },
+    { label: "Tertiary & University", value: "18", icon: GraduationCap, color: "bg-blue-50 text-blue-600" },
+    { label: "Graduated", value: "62", icon: Sparkles, color: "bg-purple-50 text-purple-600" },
   ];
 
   const spiritualPrograms = [
@@ -36,7 +39,8 @@ export default function WhatWeDo() {
     },
     {
       title: "Marriage & Counseling",
-      description: "Strengthening relationships and fostering lasting bonds through the 'Couple for Life' program.",
+      description:
+        "Strengthening relationships and fostering lasting bonds through the “Couple for Life” program.",
       icon: HeartHandshake,
     },
     {
@@ -92,15 +96,15 @@ export default function WhatWeDo() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <Reveal>
-              <h3 className="text-amber-600 font-black uppercase text-xs tracking-widest mb-4">Foundation for Change</h3>
+              <h3 className="text-amber-600 font-black uppercase text-xs tracking-widest mb-4">Creating Lasting Change</h3>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Education Support</h2>
               <p className="text-stone-600 text-lg leading-relaxed mb-8">
-                At Noah’s ARC, we believe that education is the cornerstone of positive change. We are dedicated to providing comprehensive support to empower children and young adults, breaking the cycle of poverty and unlocking potential.
+                At Noah’s Arc, we believe that education is the cornerstone of positive change. We are dedicated to providing comprehensive support to empower children and young adults, breaking the cycle of poverty and unlocking potential.
               </p>
               <div className="bg-white p-8 rounded-3xl shadow-xl border border-stone-100">
                 <div className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-2">Currently Serving</div>
-                <div className="text-6xl font-black text-emerald-700 mb-2">488</div>
-                <div className="text-lg text-stone-600 font-medium italic">Children across all levels of education</div>
+                <div className="text-6xl font-black text-emerald-700 mb-2">531</div>
+                <div className="text-lg text-stone-600 font-medium">Students across all levels of education</div>
               </div>
             </Reveal>
 
@@ -121,12 +125,29 @@ export default function WhatWeDo() {
 
       {/* Spiritual Growth Section */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-6 text-center mb-16">
-          <h3 className="text-emerald-600 font-black uppercase text-xs tracking-widest mb-4">Holistic Well-being</h3>
-          <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6 tracking-tight">Spiritual Growth</h2>
-          <p className="text-stone-600 text-lg max-w-2xl mx-auto">
-            Nurturing the spirit is fundamental to a fulfilling life. Our initiatives foster deeper connections with faith and promote community-wide spiritual well-being.
-          </p>
+        <div className="container mx-auto px-6 mb-16">
+          <div className="max-w-3xl">
+            <h3 className="text-emerald-600 font-black uppercase text-xs tracking-widest mb-4">Spiritual Empowerment</h3>
+            <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-6 tracking-tight">Spiritual Growth</h2>
+            <p className="text-stone-600 text-lg leading-relaxed mb-5">
+              At Noah’s Arc Organization, we believe lasting transformation
+              involves the whole person — body, mind, family, community, and
+              spirit. Our spiritual mission is rooted in Christian values of
+              compassion, service, dignity, forgiveness, and hope.
+            </p>
+            <p className="text-stone-600 leading-relaxed mb-5">
+              Through church leader training, conferences, youth programs,
+              marriage and family support, prayer, and spiritual mentorship, we
+              encourage individuals and families to grow in faith while
+              strengthening healthy relationships and supportive communities.
+            </p>
+            <p className="text-stone-600 leading-relaxed">
+              Our goal is not only to respond to immediate needs, but also to
+              nurture hope, character, purpose, and a spirit of service so that
+              children, families, and community leaders are equipped to support
+              and uplift others.
+            </p>
+          </div>
         </div>
 
         <div className="container mx-auto px-6">
@@ -163,7 +184,7 @@ export default function WhatWeDo() {
               <h3 className="text-amber-400 font-black uppercase text-xs tracking-widest mb-4">A Healthier Future</h3>
               <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-none">Health <br /><span className="text-emerald-500">Enhancement</span></h2>
               <p className="text-emerald-100 text-lg leading-relaxed mb-10 max-w-xl">
-                Good health is the foundation for a fulfilling life. We aim to provide clean water, promote healthy living, and prevent illnesses across underserved communities.
+                Good health is the foundation for a fulfilling life. We work to provide clean water, promote healthy living, and prevent illness in underserved communities.
               </p>
 
               <div className="grid gap-6">
@@ -173,7 +194,7 @@ export default function WhatWeDo() {
                   </div>
                   <div>
                     <h4 className="text-xl font-bold mb-1">Supply of Clean Water</h4>
-                    <p className="text-emerald-200/70 text-sm">Constructing shallow wells to reduce the spread of water-borne diseases and increase community productivity.</p>
+                    <p className="text-emerald-200/70 text-sm">We construct shallow wells to reduce water-borne diseases and improve community health and productivity.</p>
                   </div>
                 </div>
                 <div className="flex gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
@@ -182,7 +203,7 @@ export default function WhatWeDo() {
                   </div>
                   <div>
                     <h4 className="text-xl font-bold mb-1">Medical Camps</h4>
-                    <p className="text-emerald-200/70 text-sm">Bringing free consultations, essential healthcare screenings, and medications to communities in need.</p>
+                    <p className="text-emerald-200/70 text-sm">We provide free consultations, essential health screenings, and medications to communities in need.</p>
                   </div>
                 </div>
               </div>
@@ -214,12 +235,15 @@ export default function WhatWeDo() {
             <div className="relative z-10 max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight">Make a tangible and lasting impact.</h2>
               <p className="text-amber-50 text-xl mb-12">
-                Join us in our mission to break the cycle of poverty and nurture holistic growth in Kyenjojo.
+                Join us in our mission to break the cycle of poverty and help children, families, and communities thrive in Kyenjojo.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <Link href="/#contact" className="bg-white text-stone-900 px-12 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-stone-100 transition shadow-xl inline-flex items-center gap-2">
+                <SmartLink
+                  href={DONATE_URL}
+                  className="bg-white text-stone-900 px-12 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-stone-100 transition shadow-xl inline-flex items-center gap-2"
+                >
                   Donate Now <ArrowRight size={16} />
-                </Link>
+                </SmartLink>
                 <Link href="/sponsor" className="bg-emerald-900 text-white px-12 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-emerald-950 transition shadow-xl">
                   Sponsor a Child
                 </Link>

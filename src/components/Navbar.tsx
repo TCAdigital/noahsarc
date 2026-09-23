@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import SmartLink from "@/components/SmartLink";
+import { DONATE_URL } from "@/lib/links";
+
 const WHO_WE_ARE = [
   { href: "/mission-vision", label: "Mission And Vision" },
   { href: "/objectives", label: "Our Objectives" },
@@ -12,7 +15,7 @@ const WHO_WE_ARE = [
 ];
 
 const PROJECTS = [
-  { href: "/education-funds", label: "Education Funds" },
+  { href: "/education-fund", label: "Education Fund" },
   { href: "/girls-dormitory", label: "Girls’ Dormitory Construction" },
 ];
 
@@ -36,19 +39,20 @@ export default function Navbar({ logo }: { logo: string }) {
         isScrolled ? "shadow-lg py-2" : "border-stone-100 py-4"
       }`}
     >
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center">
+      <nav className="container mx-auto px-6 py-3 flex justify-between items-center gap-6">
+        <Link href="/" className="flex items-center shrink-0">
           <Image
             src={logo}
-            alt="Noah’s Arc Foundation"
-            width={180}
+            alt="Noah’s Arc Organization"
+            width={198}
             height={64}
             priority
             className="h-12 md:h-16 w-auto transition-transform hover:scale-105"
           />
         </Link>
 
-        <div className="hidden lg:flex space-x-10 font-bold text-[13px] text-stone-700 uppercase tracking-wider items-center">
+        {/* The gap before "Home" keeps the logo subtitle readable. */}
+        <div className="hidden lg:flex lg:ml-12 xl:ml-16 space-x-9 font-bold text-[13px] text-stone-700 uppercase tracking-wider items-center">
           <Link href="/" className="hover:text-emerald-700 transition">
             Home
           </Link>
@@ -94,22 +98,25 @@ export default function Navbar({ logo }: { logo: string }) {
             </div>
           </div>
 
-          <Link href="/future-trips" className="hover:text-emerald-700 transition">
-            Future Trips
+          <Link
+            href="/upcoming-visits"
+            className="hover:text-emerald-700 transition"
+          >
+            Upcoming Visits
           </Link>
-          <Link href="/#contact" className="hover:text-emerald-700 transition">
+          <Link href="/contact" className="hover:text-emerald-700 transition">
             Contact Us
           </Link>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <Link
-            href="/sponsor"
+        <div className="flex items-center space-x-4 shrink-0">
+          <SmartLink
+            href={DONATE_URL}
             className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg text-xs uppercase tracking-widest flex items-center gap-2 hover:scale-105 active:scale-95"
           >
             <Heart size={14} fill="currentColor" />
             Donate
-          </Link>
+          </SmartLink>
           <button
             className="lg:hidden text-2xl"
             aria-label="Open menu"
@@ -169,11 +176,11 @@ export default function Navbar({ logo }: { logo: string }) {
             </Link>
           ))}
           <div className="w-full h-px bg-stone-100" />
-          <Link href="/future-trips" onClick={closeMenu}>
-            Future Trips
+          <Link href="/upcoming-visits" onClick={closeMenu}>
+            Upcoming Visits
           </Link>
           <div className="w-full h-px bg-stone-100" />
-          <Link href="/#contact" onClick={closeMenu}>
+          <Link href="/contact" onClick={closeMenu}>
             Contact Us
           </Link>
         </div>

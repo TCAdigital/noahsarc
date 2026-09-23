@@ -10,14 +10,14 @@ const SITE_URL = "https://noahsarc.org";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { hero } = await getSiteContent();
-  const title = `Noah’s Arc Foundation | ${hero.title}`;
+  const title = `Noah’s Arc Organization | ${hero.title}`;
 
   return {
     metadataBase: new URL(SITE_URL),
     title,
     description: hero.description,
     keywords: [
-      "Noah’s Arc Foundation",
+      "Noah’s Arc Organization",
       "Kyenjojo",
       "Uganda",
       "sponsor a child",

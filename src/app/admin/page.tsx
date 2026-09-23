@@ -31,7 +31,7 @@ export default async function AdminLoginPage({
         <div className="bg-stone-900 p-10 text-center">
           <Image
             src="/images/logo.png"
-            alt="Noah’s Arc Foundation"
+            alt="Noah’s Arc Organization"
             width={140}
             height={48}
             className="h-12 w-auto mx-auto mb-6 brightness-110"
