@@ -59,3 +59,37 @@ create policy "site_content_admin_update" on public.site_content
   for update to authenticated
   using (public.is_site_admin())
   with check (public.is_site_admin());
+
+-- ---------------------------------------------------------------------------
+-- Messages sent through the Contact Us form.
+--
+-- Anyone may submit one (that is the point of a public contact form), but only
+-- the editors listed in site_admins can read them back.
+-- ---------------------------------------------------------------------------
+create table if not exists public.contact_messages (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  name text not null,
+  email text not null,
+  message text not null,
+  handled boolean not null default false
+);
+
+alter table public.contact_messages enable row level security;
+
+drop policy if exists "contact_messages_public_insert" on public.contact_messages;
+create policy "contact_messages_public_insert" on public.contact_messages
+  for insert to anon, authenticated with check (true);
+
+drop policy if exists "contact_messages_admin_read" on public.contact_messages;
+create policy "contact_messages_admin_read" on public.contact_messages
+  for select to authenticated using (public.is_site_admin());
+
+drop policy if exists "contact_messages_admin_update" on public.contact_messages;
+create policy "contact_messages_admin_update" on public.contact_messages
+  for update to authenticated
+  using (public.is_site_admin())
+  with check (public.is_site_admin());
+
+create index if not exists contact_messages_created_at_idx
+  on public.contact_messages (created_at desc);

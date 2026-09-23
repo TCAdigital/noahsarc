@@ -60,6 +60,17 @@ the dashboard re-verifies the session before rendering, and the Server Action
 re-verifies it again before writing (Server Actions are reachable by direct
 POST). Supabase RLS is the final gate.
 
+## Contact form
+
+Messages sent through `/contact` are stored in the `contact_messages` table and
+read back at `/admin/messages`, where an editor can mark each one as handled.
+Anyone may submit a message; only allow-listed editors can read them. The form
+carries a hidden honeypot field and validates on the server.
+
+There is no email notification yet: someone has to open the CMS to see new
+messages. Adding one means wiring an email provider into
+`src/app/(site)/contact/actions.ts` after the insert succeeds.
+
 ## Images
 
 Every asset the site ships with lives in `public/images` and is rendered through
